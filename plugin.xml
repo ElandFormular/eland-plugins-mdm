@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="eland-plugin-mdm"
+    version="1.0.0">
+    <name>ElandMDM</name>
+    <description>Eland Plguin MDM</description>
+    <license>MIT</license>
+    <keywords>Elnad, MDM</keywords>
+    <repo>https://github.com/june1249/eland-plugins-mdm.git</repo>
+    <issue>https://github.com/june1249/eland-plugins-mdm/issues</issue>
+
+    <js-module src="www/elandmdm.js" name="MDMPlugin">
+      <clobbers target="eland.plugins.mdm" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="MDM">
+          <param name="android-package" value="com.eland.plugins.MDMPlugin" />
+          <param name="onload" value="true" />
+        </feature>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+      </config-file>
+      <resource-file src="src/android/MDMLib_2_6_5_1.jar" target="libs/MDMLib_2_6_5_1.jar"/>
+
+      <source-file src="src/android/com/eland/plugins/MDMPlugin.java" target-dir="src/com/eland/plugins" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MDM">
+                <param name="ios-package" value="FFMDMPlugin" onload="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/FFEnvironmentInformationManager.h" />
+        <source-file src="src/ios/FFEnvironmentInformationManager.m" />
+        <header-file src="src/ios/FFNetworkHelper.h" />
+        <source-file src="src/ios/FFNetworkHelper.m" />
+        <header-file src="src/ios/FFDateHelper.h" />
+        <source-file src="src/ios/FFDateHelper.m" />
+        <header-file src="src/ios/FFImageHelper.h" />
+        <source-file src="src/ios/FFImageHelper.m" />
+        <header-file src="src/ios/FFLocalizationHelper.h" />
+        <source-file src="src/ios/FFLocalizationHelper.m" />
+        <header-file src="src/ios/FFURLHelper.h" />
+        <source-file src="src/ios/FFURLHelper.m" />
+        <header-file src="src/ios/FFMDMPlugin.h" />
+        <source-file src="src/ios/FFMDMPlugin.m" />
+        <header-file src="src/ios/NSBundle+Extension.h" />
+        <source-file src="src/ios/NSBundle+Extension.m" />
+        <header-file src="src/ios/NSDictionary+UrlEncoding.h" />
+        <source-file src="src/ios/NSDictionary+UrlEncoding.m" />
+        <header-file src="src/ios/NSString+Extension.h" />
+        <source-file src="src/ios/NSString+Extension.m" />
+        <header-file src="src/ios/MKLibrary.h" />
+        <source-file src="src/ios/libMKLibrary-2_10_01_25.a" framework="true" />
+    </platform>
+</plugin>
