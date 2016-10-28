@@ -11,7 +11,7 @@
     <issue>https://github.com/june1249/eland-plugins-mdm/issues</issue>
 
     <js-module src="www/elandmdm.js" name="MDMPlugin">
-      <clobbers target="eland.plugins.mdm" />
+      <clobbers target="eland.plugin.mdm" />
     </js-module>
 
     <!-- android -->
